@@ -9,3 +9,7 @@ module.exports.kinesis = {
 module.exports.logger = {
   level : "info"
 };
+
+module.exports.klaytn = {
+  cypress: 'wss://api.cypress.klaytn.net:8652'
+}

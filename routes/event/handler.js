@@ -1,3 +1,4 @@
+const config = require('../../config')
 const Caver = require('caver-js');
 const caver = new Caver(new Caver.providers.WebsocketProvider('wss://api.cypress.klaytn.net:8652'));
 
