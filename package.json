@@ -1,0 +1,25 @@
+{
+  "name": "rumble",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "aws-kcl": "^2.0.0",
+    "aws-sdk": "^2.553.0",
+    "camelize": "^1.0.0",
+    "caver-js": "^1.1.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "kinesis-readable": "^1.2.0",
+    "lifion-kinesis": "^1.1.2",
+    "log4js": "^5.2.2",
+    "moment": "^2.24.0",
+    "morgan": "~1.9.1",
+    "mysql": "^2.17.1",
+    "pug": "2.0.0-beta11"
+  }
+}
