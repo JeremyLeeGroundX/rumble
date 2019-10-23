@@ -43,7 +43,7 @@ router.get('/subscribe/start', function(req, res, next) {
   var results = handler.startSubscribe();
   return res.status(200).send(results);
 });
-router.get('/subscribe/end', function(req, res, next) {
+router.get('/subscribe/stop', function(req, res, next) {
 
   handler.endSubscribe()
     .then( results => {
@@ -71,15 +71,15 @@ router.get('/write', function(req, res, next) {
 });
 
 router.get('/consume/start', function(req, res, next) {
-  let data = req.query.data;
 
-  var results = kConsumer.startConsume();
+  let stream = req.query.stream;
+
+  var results = kConsumer.startConsume(stream);
   res.status(200).send({
     results: results
   });
 });
-router.get('/consume/end', function(req, res, next) {
-  let data = req.query.data;
+router.get('/consume/stop', function(req, res, next) {
 
   var results = kConsumer.endConsume();
   res.status(200).send({

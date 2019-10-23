@@ -2,8 +2,7 @@ var AWS = require('aws-sdk');
 var logger = require('../logger');
 var util = require('util');
 var config = require('../../config');
-var kinesis = new AWS.Kinesis({region : config.kinesis.region,
-  params: { StreamName: config.kinesis.streamRt }});
+
 
 var options = {
   // shardId: 'shard-identifier', // defaults to first shard in the stream
@@ -16,17 +15,26 @@ var options = {
 
 
 var readable;
-startConsume = function() {
+startConsume = function(streamName) {
+  var kinesis = new AWS.Kinesis(
+    {
+      region : config.kinesis.region,
+      params: {
+        StreamName: streamName
+      }
+    });
+
+
   readable = require('kinesis-readable')(kinesis, options);
   readable.on('data', function(records) {
     // console.log('CONSUME:', records);
 
     for (var i = 0 ; i < records.length ; ++i) {
       let record = records[i];
-      let data = new Buffer(record.Data, 'base64').toString();
+      let data = Buffer.alloc(record.Data.length, record.Data, 'base64').toString();
       sequenceNumber = record.SequenceNumber;
       partitionKey = record.PartitionKey;
-      logger.info(util.format('Record: %s, SeqenceNumber: %s, PartitionKey:%s', data, sequenceNumber, partitionKey));
+      logger.info(data);
     }
   })
     .on('checkpoint', function(sequenceNumber) {
