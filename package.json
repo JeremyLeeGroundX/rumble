@@ -16,7 +16,7 @@
     "http-errors": "~1.6.3",
     "kinesis-readable": "^1.2.0",
     "lifion-kinesis": "^1.1.2",
-    "log4js": "^5.2.2",
+    "log4js": "^6.4.0",
     "moment": "^2.24.0",
     "morgan": "~1.9.1",
     "mysql": "^2.17.1",
